@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/21 11:18:12 by abbouras         ###   ########.fr       */
+/*   Created: 2024/10/24 14:27:52 by abbouras          #+#    #+#             */
+/*   Updated: 2024/10/24 14:27:52 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isdigit(int c)
 {
-	ft_printf("Hello World!\n");
-	ft_error();
+	return (c >= '0' && c <= '9');
 }
+
+/*#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <ctype.h>
+int	main(int ac, char **av)
+{
+	(void)ac;
+	printf("%d\n", ft_isdigit(av[1][0]));
+	printf("%d\n", isdigit(av[1][0]));
+}*/

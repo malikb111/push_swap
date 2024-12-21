@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                    :::      ::::::::   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/21 11:18:12 by abbouras         ###   ########.fr       */
+/*   Created: 2024/10/29 18:27:05 by abbouras          #+#    #+#             */
+/*   Updated: 2024/10/29 18:27:05 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstlast(t_list *lst)
 {
-	ft_printf("Hello World!\n");
-	ft_error();
+	t_list	*current;
+
+	if (!lst)
+		return (NULL);
+	current = lst;
+	while (current->next != NULL)
+		current = current->next;
+	return (current);
 }

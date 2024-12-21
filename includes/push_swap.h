@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/21 11:18:12 by abbouras         ###   ########.fr       */
+/*   Created: 2024/12/21 11:18:42 by abbouras          #+#    #+#             */
+/*   Updated: 2024/12/21 11:18:42 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(void)
-{
-	ft_printf("Hello World!\n");
-	ft_error();
-}
+# include "../libft/libft.h"
+# include <stdlib.h>
+
+void	ft_error(void);
+
+#endif
