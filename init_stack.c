@@ -6,35 +6,20 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/24 13:01:07 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/24 13:39:18 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-long	ft_atol(char *str)
+void	init_stack_a(t_stack_node **stack_a, char **av)
 {
 	int	i;
-	int	sign;
-	long	number;
 
 	i = 0;
-	number = 0;
-	sign = 0;
-	while (ft_isspace(str[i]) && str[i])
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	while(av[i])
 	{
-		if (str[i] == '-')
-			sign = 1;
-		i++;
+		if (error_check_syntax(av[i])) {}
+			// free ici si erreur
 	}
-	while (str[i] >= '0' && str[i] <= '9' )
-	{
-		number = (number * 10) + str[i] - 48;
-		i++;
-	}
-	if (sign == 1)
-		number = -number;
-	return (number);
 }

@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/24 12:12:40 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/24 13:17:14 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-	int i = 0;
+	int i = 1;
 
 	a = NULL;
 	b = NULL;
@@ -31,3 +31,4 @@ int	main(int ac, char **av)
 		i++;
 	}
 }
+
