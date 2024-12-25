@@ -14,21 +14,17 @@
 
 int	main(int ac, char **av)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	int i = 1;
+	t_stack_node	*stack_a;
+	t_stack_node	*stack_b;
 
-	a = NULL;
-	b = NULL;
-	ft_printf("%p, %p\n\n", &a, &b);
+	stack_a = NULL;
+	stack_b = NULL;
+	ft_printf("%p, %p\n\n", &stack_a, &stack_b);
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
-	else if (ac == 2)
+	else if (ac == 2 && av[1][1] != '\0')
 		av = ft_split(av[1], ' ');
-	while (av[i] != NULL)	
-	{
-		ft_printf("%d\n", ft_atol(av[i]));
-		i++;
-	}
+	stack_init(&stack_a, av);
+	stack_print(&stack_a);
+	stack_free(&stack_a);
 }
-

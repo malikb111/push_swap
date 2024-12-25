@@ -10,16 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
-void	init_stack_a(t_stack_node **stack_a, char **av)
+void	stack_init(t_stack_node **stack_a, char **av)
 {
-	int	i;
+	long	n;
+	int		i;
 
-	i = 0;
-	while(av[i])
+	i = 1;
+	while (av[i])
 	{
-		if (error_check_syntax(av[i])) {}
-			// free ici si erreur
+		if (error_check_syntax(av[i]))
+			error_reset(stack_a);
+		n = ft_atol(av[i]);
+		if (n < INT_MIN || n > INT_MAX)
+			error_reset(stack_a);
+		if (error_check_dup(stack_a, (int)n))
+			error_reset(stack_a);
+		stack_add_node(stack_a, (int)n);
+		i++;
 	}
 }

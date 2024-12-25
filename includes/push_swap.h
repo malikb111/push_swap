@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct s_stack_node
 {
@@ -25,8 +26,15 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 void	error_exit(void);
+void	error_reset(t_stack_node **stack);
+int		error_check_dup(t_stack_node **stack, int value);
 int		error_check_syntax(char *str);
 long	ft_atol(char *str);
 int		ft_isspace(char c);
+void	stack_init(t_stack_node **stack_a, char **av);
+void	stack_add_node(t_stack_node **stack, int val);
+t_stack_node		*stack_find_last(t_stack_node **stack);
+void	stack_free(t_stack_node **stack);
+void	stack_print(t_stack_node **stack);
 
 #endif

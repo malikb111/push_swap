@@ -21,9 +21,9 @@ int	ft_isspace(char c)
 
 long	ft_atol(char *str)
 {
-	int	i;
-	int	sign;
 	long	number;
+	int		i;
+	int		sign;
 
 	i = 0;
 	number = 0;

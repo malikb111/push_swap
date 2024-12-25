@@ -1,9 +1,9 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I$(LIBFT_DIR)
-SRC = push_swap.c errors_func.c init_stack.c utils.c
+SRC = push_swap.c errors/errors_func.c stack/stack_func.c stack/stack_init.c utils.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 

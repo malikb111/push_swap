@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	error_exit(void)
 {
@@ -18,20 +18,40 @@ void	error_exit(void)
 	exit(1);
 }
 
-int		error_check_syntax(char *str)
+int	error_check_syntax(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str)	
+	if (!str || str[0] == '\0')
 		return (1);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]))
+		if (str[i] <= '0' || str[i] >= '9')
 			return (1);
 		i++;
 	}
 	return (0);
+}
+
+int	error_check_dup(t_stack_node **stack, int value)
+{
+	t_stack_node	*current;
+
+	current = *stack;
+	while (current)
+	{
+		if (current->nbr == value)
+			return (1);
+		current = current->next;
+	}
+	return (0);
+}
+
+void	error_reset(t_stack_node **stack)
+{
+	stack_free(stack);
+	error_exit();
 }
