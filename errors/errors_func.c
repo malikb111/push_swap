@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:24:33 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/24 13:30:16 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:33:07 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	error_check_syntax(char *str)
 		i++;
 	while (str[i])
 	{
-		if (str[i] <= '0' || str[i] >= '9')
+		if (str[i] < '0' || str[i] > '9')
 			return (1);
 		i++;
 	}

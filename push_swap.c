@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/24 13:17:14 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:40:02 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int	main(int ac, char **av)
 	else if (ac == 2 && av[1][1] != '\0')
 		av = ft_split(av[1], ' ');
 	stack_init(&stack_a, av);
+	if (!stack_is_sorted(&stack_a))
+	{
+		ft_printf("je vais trier\n");
+	}
 	stack_print(&stack_a);
 	stack_free(&stack_a);
 }

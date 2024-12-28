@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_func.c                                        :+:      :+:    :+:   */
+/*   stack_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:39:03 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/25 15:39:03 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/28 16:07:50 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,20 @@ void	stack_free(t_stack_node **stack)
 		free(destroyer);
 	}
 	*stack = NULL;
+}
+
+int		stack_is_sorted(t_stack_node **stack)
+{
+	t_stack_node	*current;
+
+	current = *stack;
+	if (!current)
+		return (0);
+	while (current->next)
+	{
+		if (current->nbr > current->next->nbr)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
