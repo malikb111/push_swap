@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:39:03 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/28 16:07:50 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/28 22:05:52 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	stack_free(t_stack_node **stack)
 	*stack = NULL;
 }
 
-int		stack_is_sorted(t_stack_node **stack)
+int	stack_is_sorted(t_stack_node **stack)
 {
 	t_stack_node	*current;
 

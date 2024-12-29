@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:42 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/28 16:08:57 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/29 15:02:57 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,8 @@ t_stack_node		*stack_find_last(t_stack_node **stack);
 void	stack_free(t_stack_node **stack);
 void	stack_print(t_stack_node **stack);
 int		stack_is_sorted(t_stack_node **stack);
+void	commands_sa(t_stack_node **stack, int log);
+void	commands_sb(t_stack_node **stack, int log);
+void	commands_ss(t_stack_node **stack_a, t_stack_node **stack_b, int log);
 
 #endif
