@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:42 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/30 22:43:20 by abbouras         ###   ########.fr       */
+/*   Updated: 2024/12/30 23:35:32 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ void	commands_pb(t_stack_node **stack_a, t_stack_node **stack_b, int log);
 void	commands_ra(t_stack_node **stack_a, int log);
 void	commands_rb(t_stack_node **stack_b, int log);
 void	commands_rr(t_stack_node **stack_a, t_stack_node **stack_b, int log);
+void	commands_rra(t_stack_node **stack_a, int log);
+void	commands_rrb(t_stack_node **stack_b, int log);
+void	commands_rrr(t_stack_node **stack_a, t_stack_node **stack_b, int log);
 
 #endif

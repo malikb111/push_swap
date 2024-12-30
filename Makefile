@@ -10,7 +10,8 @@ SRC = push_swap.c \
       stack/stack_init.c \
       utils.c \
 	  commands/push_func.c \
-	  commands/rotate_func.c
+	  commands/rotate_func.c\
+	  commands/reverse_func.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 
