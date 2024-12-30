@@ -3,7 +3,14 @@ CFLAGS = -Wall -Wextra -Werror -g3
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 INCLUDES = -I$(LIBFT_DIR)
-SRC = push_swap.c errors/errors_func.c commands/swap_func.c stack/stack_func.c stack/stack_init.c utils.c
+SRC = push_swap.c \
+      errors/errors_func.c \
+      commands/swap_func.c \
+      stack/stack_func.c \
+      stack/stack_init.c \
+      utils.c \
+	  commands/push_func.c \
+	  commands/rotate_func.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 
