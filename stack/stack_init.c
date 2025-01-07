@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/01/07 22:08:24 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/01/07 22:54:19 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,4 @@ void	stack_index(t_stack_node **stack_a)
 		min = find_min(stack_a);
 	}
 }
+

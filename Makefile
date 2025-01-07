@@ -8,6 +8,7 @@ SRC = push_swap.c \
       commands/swap_func.c \
       stack/stack_func.c \
       stack/stack_init.c \
+      stack/stack_sort.c \
       utils.c \
 	  commands/push_func.c \
 	  commands/rotate_func.c\
