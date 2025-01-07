@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/24 13:39:18 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/01/07 21:03:05 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	stack_init(t_stack_node **stack_a, char **av)
+void	stack_init(t_stack_node **stack_a, char **av, int start_index)
 {
 	long	n;
 	int		i;
 
-	i = 1;
+	i = start_index;
 	while (av[i])
 	{
 		if (error_check_syntax(av[i]))
