@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:39:03 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/28 22:05:52 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/01/07 22:07:00 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	stack_add_node(t_stack_node **stack, int val)
 		return ;
 	node->nbr = val;
 	node->next = NULL;
+	node->index = -1;
 	if (!(*stack))
 	{
 		*stack = node;
@@ -56,7 +57,7 @@ void	stack_print(t_stack_node **stack)
 	current = *stack;
 	while (current)
 	{
-		ft_printf("node : %d\n", current->nbr);
+		ft_printf("node : %d\n", current->index);
 		current = current->next;
 	}
 }
