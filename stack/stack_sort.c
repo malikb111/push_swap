@@ -6,70 +6,63 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:21:23 by abbouras          #+#    #+#             */
-/*   Updated: 2025/01/07 22:55:54 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:10:04 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	get_max_bits(t_stack_node **stack)
+static void	sort_two_stack(t_stack_node **stack_a)
 {
-	t_stack_node	*current;
-	int			max_num;
-	int			max_bits;
-
-	current = *stack;
-	max_num = current->index;
-	max_bits = 0;
-	while (current)
-	{
-		if (current->index > max_num)
-			max_num = current->index;
-		current = current->next;
-	}
-	while ((max_num >> max_bits) != 0)
-		max_bits++;
-	return (max_bits);
+	if ((*stack_a)->nbr > (*stack_a)->next->nbr)
+		commands_sa(stack_a, 1);
 }
 
-static int	get_stack_size(t_stack_node **stack)
+static void	sort_three_stack(t_stack_node **stack_a)
 {
-	t_stack_node	*current;
-	int			size;
+	int	a;
+	int	b;
+	int	c;
 
-	size = 0;
-	current = *stack;
-	while (current)
+	a = (*stack_a)->nbr;
+	b = (*stack_a)->next->nbr;
+	c = (*stack_a)->next->next->nbr;
+	if (a > b && b < c && a < c)
+		commands_sa(stack_a, 1);
+	else if (a > b && b > c)
 	{
-		size++;
-		current = current->next;
+		commands_sa(stack_a, 1);
+		commands_rra(stack_a, 1);
 	}
-	return (size);
+	else if (a > b && b < c && a > c)
+		commands_ra(stack_a, 1);
+	else if (a < b && b > c && a < c)
+	{
+		commands_sa(stack_a, 1);
+		commands_ra(stack_a, 1);
+	}
+	else if (a < b && b > c && a > c)
+		commands_rra(stack_a, 1);
+}
+
+static void	sort_large_stack(t_stack_node **stack_a, t_stack_node **stack_b)
+{
+	int	total;
+
+	total = get_stack_size(stack_a);
+	transfer_all_chunks(stack_a, stack_b, total);
+	reconstruct_stack(stack_a, stack_b);
 }
 
 void	stack_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	size;
-	int	max_bits;
-	int	i;
-	int	j;
 
 	size = get_stack_size(stack_a);
-	max_bits = get_max_bits(stack_a);
-	i = 0;
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < size)
-		{
-			if ((((*stack_a)->index >> i) & 1) == 1)
-				commands_ra(stack_a, 1);
-			else
-				commands_pb(stack_a, stack_b, 1);
-			j++;
-		}
-		while (*stack_b)
-			commands_pa(stack_a, stack_b, 1);
-		i++;
-	}
+	if (size == 2)
+		sort_two_stack(stack_a);
+	else if (size == 3)
+		sort_three_stack(stack_a);
+	else
+		sort_large_stack(stack_a, stack_b);
 }

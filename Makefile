@@ -9,6 +9,9 @@ SRC = push_swap.c \
       stack/stack_func.c \
       stack/stack_init.c \
       stack/stack_sort.c \
+	  stack/stack_sort_transfer.c \
+	  stack/stack_sort_reconstruct.c \
+	  stack/stack_sort_utils.c \
       utils.c \
 	  commands/push_func.c \
 	  commands/rotate_func.c\
