@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:12:37 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/23 18:22:17 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/24 05:39:28 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,27 @@ int element_in_chunk(t_stack_node **stack, int min, int max)
     return (0);
 }
 
-/* Transfère de A vers B tous les éléments dont l'index est dans [min_index, max_index].
+/* Transfère de A vers B tous les éléments dont l'index est dans [min, max].
    On effectue une rotation de B (rb) pour les éléments de la moitié inférieure du chunk. */
-void transfer_chunk(t_stack_node **stack_a, t_stack_node **stack_b, int min_index, int max_index)
+void transfer_chunk(t_stack_node **a, t_stack_node **b, int min, int max)
 {
-    int half_chunk = (max_index - min_index + 1) / 2;
+    int half_chunk = (max - min + 1) / 2;
     
-    while (element_in_chunk(stack_a, min_index, max_index))
+    while (element_in_chunk(a, min, max))
     {
-        if ((*stack_a)->index >= min_index && (*stack_a)->index <= max_index)
+        if ((*a)->index >= min && (*a)->index <= max)
         {
-            commands_pb(stack_a, stack_b, 1);
-            if ((*stack_b) && ((*stack_b)->index < (min_index + half_chunk)))
-                commands_rb(stack_b, 1);
+            commands_pb(a, b, 1);
+            if ((*b) && ((*b)->index < (min + half_chunk)))
+                commands_rb(b, 1);
         }
         else
-            commands_ra(stack_a, 1);
+            commands_ra(a, 1);
     }
 }
 
 /* Calcule le nombre de chunks, la taille de chaque chunk et transfère par chunks */
-void transfer_all_chunks(t_stack_node **stack_a, t_stack_node **stack_b, int total)
+void transfer_all_chunks(t_stack_node **a, t_stack_node **b, int total)
 {
     int num_chunks = optimal_chunk_count(total);
     int chunk_size = calculate_chunk_size(total, num_chunks);
@@ -58,7 +58,7 @@ void transfer_all_chunks(t_stack_node **stack_a, t_stack_node **stack_b, int tot
             max_index = total - 1;
         else
             max_index = ((i + 1) * chunk_size - 1);
-        transfer_chunk(stack_a, stack_b, i * chunk_size, max_index);
+        transfer_chunk(a, b, i * chunk_size, max_index);
         i++;
     }
 }

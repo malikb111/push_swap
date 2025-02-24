@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/23 18:54:57 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/24 05:24:49 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ int	main(int ac, char **av)
 		stack_init(&stack_a, av, 1);
 	if (!stack_is_sorted(&stack_a))
 		stack_sort(&stack_a, &stack_b);
-	///
-	stack_print(&stack_a);
-	ft_printf("------\n");
-	///
-	stack_print(&stack_b);
 	stack_free(&stack_a);
 	stack_free(&stack_b);
 }
