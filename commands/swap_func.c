@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 16:46:55 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/29 15:08:13 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:22:27 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	swap(t_stack_node **stack)
 	current = *stack;
 	if (!current || !current->next)
 		return ;
-	
 	next_node = current->next;
 	current->next = next_node->next;
 	if (next_node->next)

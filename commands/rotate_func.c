@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:26:33 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/23 18:36:44 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:22:20 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	commands_ra(t_stack_node **stack_a, int log)
 {
-	t_stack_node *first;
-	t_stack_node *last;
+	t_stack_node	*first;
+	t_stack_node	*last;
 
 	if (!*stack_a || !(*stack_a)->next)
-		return;
+		return ;
 	first = *stack_a;
 	*stack_a = first->next;
 	(*stack_a)->prev = NULL;
@@ -32,11 +32,11 @@ void	commands_ra(t_stack_node **stack_a, int log)
 
 void	commands_rb(t_stack_node **stack_b, int log)
 {
-	t_stack_node *first;
-	t_stack_node *last;
+	t_stack_node	*first;
+	t_stack_node	*last;
 
 	if (!*stack_b || !(*stack_b)->next)
-		return;
+		return ;
 	first = *stack_b;
 	*stack_b = first->next;
 	(*stack_b)->prev = NULL;

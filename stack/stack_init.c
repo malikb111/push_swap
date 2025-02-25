@@ -6,59 +6,59 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 01:43:10 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:24:31 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	process_argument(t_stack_node **stack_a, char **av, int start_index, char *arg)
+static void	process_arg(t_stack_node **a, char **av, int start, char *arg)
 {
 	long	n;
 
 	if (error_check_syntax(arg))
 	{
-		if (start_index == 0)
+		if (start == 0)
 			free_split_dup(av);
-		error_reset(stack_a);
+		error_reset(a);
 	}
 	n = ft_atol(arg);
 	if (n < INT_MIN || n > INT_MAX)
 	{
-		if (start_index == 0)
+		if (start == 0)
 			free_split_dup(av);
-		error_reset(stack_a);
+		error_reset(a);
 	}
-	if (error_check_dup(stack_a, (int)n))
+	if (error_check_dup(a, (int)n))
 	{
-		if (start_index == 0)
+		if (start == 0)
 			free_split_dup(av);
-		error_reset(stack_a);
+		error_reset(a);
 	}
-	stack_add_node(stack_a, (int)n);
+	stack_add_node(a, (int)n);
 }
 
-void	stack_init(t_stack_node **stack_a, char **av, int start_index)
+void	stack_init(t_stack_node **a, char **av, int start)
 {
 	int	i;
 
-	i = start_index;
+	i = start;
 	while (av[i])
 	{
-		process_argument(stack_a, av, start_index, av[i]);
+		process_arg(a, av, start, av[i]);
 		i++;
 	}
-	stack_index(stack_a);
+	stack_index(a);
 }
 
-static t_stack_node	*find_min(t_stack_node **stack_a)
+static t_stack_node	*find_min(t_stack_node **a)
 {
 	t_stack_node	*current;
 	t_stack_node	*min_node;
 
-	if (!stack_a || !*stack_a)
+	if (!a || !*a)
 		return (NULL);
-	current = *stack_a;
+	current = *a;
 	min_node = NULL;
 	while (current)
 	{
@@ -69,19 +69,18 @@ static t_stack_node	*find_min(t_stack_node **stack_a)
 	return (min_node);
 }
 
-void	stack_index(t_stack_node **stack_a)
+void	stack_index(t_stack_node **a)
 {
 	t_stack_node	*min;
-	int			index;
+	int				index;
 
-	if (!stack_a || !*stack_a)
+	if (!a || !*a)
 		return ;
 	index = 0;
-	min = find_min(stack_a);
+	min = find_min(a);
 	while (min)
 	{
 		min->index = index++;
-		min = find_min(stack_a);
+		min = find_min(a);
 	}
 }
-

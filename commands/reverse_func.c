@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 23:01:02 by abbouras          #+#    #+#             */
-/*   Updated: 2024/12/30 23:34:52 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:21:31 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	commands_rra(t_stack_node **stack_a, int log)
 	if (log)
 		ft_printf("rra\n");
 }
+
 void	commands_rrb(t_stack_node **stack_b, int log)
 {
 	reverse_rotate(stack_b);

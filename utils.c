@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:08:23 by malik             #+#    #+#             */
-/*   Updated: 2025/02/25 01:30:14 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 10:03:29 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_split_dup(char **split)
 		i++;
 	}
 	free(split);
-}	
+}
 
 int	count_words_dup(char const *s, char c)
 {
@@ -50,6 +50,7 @@ int	count_words_dup(char const *s, char c)
 	}
 	return (count);
 }
+
 long	ft_atol(char *str)
 {
 	long	number;
@@ -67,7 +68,7 @@ long	ft_atol(char *str)
 			sign = 1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9' )
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		number = (number * 10) + str[i] - 48;
 		i++;
