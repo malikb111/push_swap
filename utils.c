@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:08:23 by malik             #+#    #+#             */
-/*   Updated: 2025/02/25 00:35:40 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 01:30:14 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-void	free_split_dup(char **split, int size)
+void	free_split_dup(char **split)
 {
 	int	i;
 
 	i = 0;
-	while (i < size)
+	while (split[i])
 	{
 		free(split[i]);
 		i++;
