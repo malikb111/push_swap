@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:42 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 00:35:33 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 01:36:11 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		error_check_syntax(char *str);
 long	ft_atol(char *str);
 int		ft_isspace(char c);
 int		count_words_dup(char const *s, char c);
-void	free_split_dup(char **split, int size);
+void	free_split_dup(char **split);
 void	stack_init(t_stack_node **stack_a, char **av, int start_index);
 void	stack_add_node(t_stack_node **stack, int val);
 void	stack_free(t_stack_node **stack);

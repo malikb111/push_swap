@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 00:35:52 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 01:36:14 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	{
 		split_av = ft_split(av[1], ' ');
 		stack_init(&stack_a, split_av, 0);
-		free_split_dup(split_av, count_words_dup(av[1], ' ') - 1);
+		free_split_dup(split_av);
 	}
 	else
 		stack_init(&stack_a, av, 1);
