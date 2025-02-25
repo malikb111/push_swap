@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:08:23 by malik             #+#    #+#             */
-/*   Updated: 2024/12/24 13:33:42 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 00:35:40 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,37 @@ int	ft_isspace(char c)
 	return (0);
 }
 
+void	free_split_dup(char **split, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}	
+
+int	count_words_dup(char const *s, char c)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
+	{
+		while (*s == c && *s)
+			s++;
+		if (*s != c && *s)
+		{
+			count++;
+			while (*s != c && *s)
+				s++;
+		}
+	}
+	return (count);
+}
 long	ft_atol(char *str)
 {
 	long	number;

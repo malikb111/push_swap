@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 16:17:40 by abbouras          #+#    #+#             */
-/*   Updated: 2024/11/16 15:46:50 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/24 23:57:47 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	count_words(char const *s, char c)
 
 void	free_split(char **strs, int i)
 {
-	while (i <= 0)
+	while (i >= 0)
 	{
 		free(strs[i]);
 		i--;

@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/24 22:42:09 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 00:35:52 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av)
 {
 	t_stack_node	*stack_a;
 	t_stack_node	*stack_b;
+	char		**split_av;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -23,8 +24,9 @@ int	main(int ac, char **av)
 		return (1);
 	else if (ac == 2 && av[1][1] != '\0')
 	{
-		av = ft_split(av[1], ' ');
-		stack_init(&stack_a, av, 0);
+		split_av = ft_split(av[1], ' ');
+		stack_init(&stack_a, split_av, 0);
+		free_split_dup(split_av, count_words_dup(av[1], ' ') - 1);
 	}
 	else
 		stack_init(&stack_a, av, 1);
