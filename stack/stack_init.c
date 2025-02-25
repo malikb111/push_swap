@@ -6,28 +6,46 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/23 16:06:35 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/02/25 01:43:10 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	stack_init(t_stack_node **stack_a, char **av, int start_index)
+static void	process_argument(t_stack_node **stack_a, char **av, int start_index, char *arg)
 {
 	long	n;
-	int		i;
+
+	if (error_check_syntax(arg))
+	{
+		if (start_index == 0)
+			free_split_dup(av);
+		error_reset(stack_a);
+	}
+	n = ft_atol(arg);
+	if (n < INT_MIN || n > INT_MAX)
+	{
+		if (start_index == 0)
+			free_split_dup(av);
+		error_reset(stack_a);
+	}
+	if (error_check_dup(stack_a, (int)n))
+	{
+		if (start_index == 0)
+			free_split_dup(av);
+		error_reset(stack_a);
+	}
+	stack_add_node(stack_a, (int)n);
+}
+
+void	stack_init(t_stack_node **stack_a, char **av, int start_index)
+{
+	int	i;
 
 	i = start_index;
 	while (av[i])
 	{
-		if (error_check_syntax(av[i]))
-			error_reset(stack_a);
-		n = ft_atol(av[i]);
-		if (n < INT_MIN || n > INT_MAX)
-			error_reset(stack_a);
-		if (error_check_dup(stack_a, (int)n))
-			error_reset(stack_a);
-		stack_add_node(stack_a, (int)n);
+		process_argument(stack_a, av, start_index, av[i]);
 		i++;
 	}
 	stack_index(stack_a);
