@@ -43,7 +43,11 @@ graph TD
     %% Détail du tri par chunks pour grandes piles
     SortLarge --> DetermineChunks["Calcul du nombre optimal de chunks<br>(optimal_chunk_count)"]
     DetermineChunks --> DefineChunk["Détermination de la taille de chaque chunk<br>(calculate_chunk_size)"]
-    DefineChunk --> TransferChunks["transfer_all_chunks()<br>- Transfert progressif des éléments par chunk de A vers B"]
+    
+    %% Nouvelle branche dédiée au système de chunk avec explications pédagogiques
+    DefineChunk --> ChunkExplication["Explication du système de chunk :<br>- La pile A est indexée pour connaître l'ordre des éléments<br>- La pile est divisée en segments (chunks) basés sur ces indices<br>- Chaque chunk regroupe des éléments aux valeurs consécutives<br>- Le nombre et la taille des chunks sont optimisés pour réduire le nombre de rotations<br>- Permet un transfert ciblé et une reconstruction efficace"]
+    ChunkExplication --> TransferChunks["transfer_all_chunks()<br>- Transfert progressif des éléments par chunk de A vers B"]
+    
     TransferChunks --> ProcessChunk["Pour chaque chunk :<br>1. Localisation précise des éléments<br>2. Optimisation des rotations (ra, rra)"]
     ProcessChunk --> ReconstructA["reconstruct_stack()<br>1. Identifie le maximum dans B<br>2. Rotation pour le mettre en tête<br>3. Transfert vers A<br>4. Répétition jusqu'à épuisement de B"]
 
