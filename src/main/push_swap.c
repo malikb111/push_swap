@@ -6,12 +6,26 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/04/02 18:25:17 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:48:37 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
+/**
+ * @brief Entrée du programme push_swap.
+ *
+ * Vérifie et traite les arguments.
+ * Initialise les piles A et B, et lance le tri
+ * si la pile A n'est pas triée.
+ *
+ * Si un argument unique est fourni sous forme
+ * de chaîne, il est séparé en plusieurs éléments.
+ *
+ * @param ac   Nombre d'arguments.
+ * @param av   Tableau des arguments.
+ * @return int 0 en cas de succès, 1 sinon.
+ */
 int	main(int ac, char **av)
 {
 	t_stack_node	*stack_a;

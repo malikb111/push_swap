@@ -6,14 +6,22 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:12:35 by abbouras          #+#    #+#             */
-/*   Updated: 2025/04/02 17:04:20 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:57:27 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/* Retourne la position de l'élément de B ayant l'index maximum.
-   Les positions commencent à 0. */
+/**
+ * @brief Retourne la position du nœud avec l'index maximum dans B.
+ *
+ * Parcourt la pile B et retourne la position 
+ * (commençant à 0) du nœud dont l'index est le plus 
+ * élevé. Si la pile est vide, retourne -1.
+ *
+ * @param b Adresse du pointeur de la pile B.
+ * @return int Position du nœud maximum, ou -1 en cas d'erreur.
+ */
 int	find_max_position(t_stack_node **b)
 {
 	t_stack_node	*current;
@@ -42,8 +50,16 @@ int	find_max_position(t_stack_node **b)
 	return (max_pos);
 }
 
-/* Fait tourner la pile B pour placer l'élément maximum en tête.
-   Utilise rb ou rrb selon la position la plus efficace. */
+/**
+ * @brief Tourne la pile B pour mettre le maximum en tête.
+ *
+ * En fonction de la position du maximum dans B, effectue 
+ * une rotation vers le haut avec rb, ou vers le bas avec 
+ * rrb, pour que le nœud maximum se retrouve en première 
+ * position.
+ *
+ * @param b Adresse du pointeur de la pile B.
+ */
 void	rotate_to_max(t_stack_node **b)
 {
 	int	pos;
@@ -71,9 +87,16 @@ void	rotate_to_max(t_stack_node **b)
 	}
 }
 
-/* Reconstruit la pile A à partir de la pile B.
-   À chaque itération, on fait tourner B jusqu'au maximum soit en tête, puis
-   on effectue un `pa` pour le transférer dans A. */
+/**
+ * @brief Reconstruit la pile A à partir de B.
+ *
+ * Transfère tous les éléments de la pile B vers la pile A.
+ * À chaque itération, la pile B est tournée pour mettre le 
+ * nœud maximum en tête, puis ce nœud est transféré sur A.
+ *
+ * @param stack_a Adresse du pointeur de la pile A.
+ * @param b       Adresse du pointeur de la pile B.
+ */
 void	reconstruct_stack(t_stack_node **stack_a, t_stack_node **b)
 {
 	while (*b)

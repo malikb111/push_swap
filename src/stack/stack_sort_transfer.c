@@ -6,16 +6,23 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:12:37 by abbouras          #+#    #+#             */
-/*   Updated: 2025/04/02 16:16:14 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 18:58:04 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-/*
-** Vérifie s'il existe dans la pile un élément dont l'index est
-** compris entre min et max.
-*/
+/**
+ * @brief Vérifie la présence d'un élément dans un chunk.
+ *
+ * Parcourt la pile et retourne 1 si un nœud a un index
+ * compris entre min et max, 0 sinon.
+ *
+ * @param stack Adresse du pointeur de la pile.
+ * @param min   Borne inférieure de l'index.
+ * @param max   Borne supérieure de l'index.
+ * @return int  1 si un élément est trouvé, 0 sinon.
+ */
 int	element_in_chunk(t_stack_node **stack, int min, int max)
 {
 	t_stack_node	*curr;
@@ -30,12 +37,18 @@ int	element_in_chunk(t_stack_node **stack, int min, int max)
 	return (0);
 }
 
-/*
-** Transfère de A vers B tous les éléments dont l'index est
-** dans l'intervalle [min, max].
-** Une rotation (rb) est appliquée sur B pour les éléments de la moitié
-** inférieure du chunk.
-*/
+/**
+ * @brief Transfère des éléments de A vers B par chunk.
+ *
+ * Transfère les éléments de la pile A dont l'index se situe dans
+ * l'intervalle [min, max] vers la pile B. Pour les éléments de la
+ * moitié inférieure du chunk, une rotation de B (rb) est appliquée.
+ *
+ * @param a   Adresse de la pile A.
+ * @param b   Adresse de la pile B.
+ * @param min Borne inférieure de l'index.
+ * @param max Borne supérieure de l'index.
+ */
 void	transfer_chunk(t_stack_node **a, t_stack_node **b, int min, int max)
 {
 	int	half_chunk;
@@ -54,10 +67,16 @@ void	transfer_chunk(t_stack_node **a, t_stack_node **b, int min, int max)
 	}
 }
 
-/*
-** Calcule le nombre de chunks, la taille de chacun, puis transfère
-** les éléments par chunks de A vers B.
-*/
+/**
+ * @brief Transfère tous les éléments de A vers B par chunk.
+ *
+ * Calcule le nombre de chunks et la taille de chacun, puis
+ * transfère les éléments de A vers B par intervalle.
+ *
+ * @param a     Adresse de la pile A.
+ * @param b     Adresse de la pile B.
+ * @param total Nombre total d'éléments.
+ */
 void	transfer_all_chunks(t_stack_node **a, t_stack_node **b, int total)
 {
 	int	num_chunks;
