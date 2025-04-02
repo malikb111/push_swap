@@ -1,0 +1,88 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+graph TD
+    %% Style et configuration
+    classDef module fill:#f9f,stroke:#333,stroke-width:2px
+    classDef structure fill:#bbf,stroke:#333,stroke-width:2px
+    classDef algorithm fill:#bfb,stroke:#333,stroke-width:2px
+    classDef command fill:#fbb,stroke:#333,stroke-width:2px
+    classDef pedagogic fill:#dff,stroke:#333,stroke-width:2px,stroke-dasharray: 5,5
+
+    %% Nœud principal
+    Main["main()"]
+    Main --> InitStack["Initialisation des piles<br>- Allocation mémoire<br>- Vérification des arguments"]
+    
+    %% Initialisation et validation des entrées
+    InitStack --> ParseArgs["Traitement des arguments d'entrée"]
+    ParseArgs --> ValidateInput["Validation des entrées<br>(Vérification : non numérique, doublons, dépassement d'int)"]
+    ValidateInput --> CheckErrors["Vérification des erreurs<br>(Syntaxe, doublons, overflow)"]
+    CheckErrors -->|"Erreur"| ErrorExit["Affiche 'Error' et quitte"]
+    CheckErrors -->|"Valide"| CreateStack["Création de la pile A"]
+    CreateStack --> IndexStack["Indexation des éléments (stack_index)<br>Attribution des indices en ordre croissant"]
+    IndexStack --> ConfirmStack["Validation de la pile initialisée"]
+
+    %% Vérification de l'état de tri
+    Main --> CheckSorted["Vérification si la pile est déjà triée"]
+    CheckSorted -->|"Déjà trié"| End["Fin du programme<br>Aucune opération nécessaire"]
+    CheckSorted -->|"Non trié"| SortStack["Lancement du tri (stack_sort())"]
+
+    %% Sélection de l'algorithme de tri
+    SortStack --> CheckSize["Analyse de la taille de la pile"]
+    
+    %% Cas de tri pour petites piles
+    CheckSize -->|"2 éléments"| SortTwo["sort_two_stack()<br>- Échange simple si nécessaire"]
+    CheckSize -->|"3 éléments"| SortThree["sort_three_stack()<br>- Utilisation optimale de sa, ra et rra"]
+    CheckSize -->|"5 éléments"| SortFive["sort_five_stack()<br>1. Transfert des 2 plus petits vers B<br>2. Tri des 3 restants dans A<br>3. Réinsertion contrôlée depuis B"]
+
+    %% Cas de tri pour grandes piles
+    CheckSize -->|"Plus de 5 éléments"| SortLarge["sort_large_stack()<br>- Approche par chunks pour optimiser les rotations"]
+    
+    %% Détail du tri par chunks pour grandes piles
+    SortLarge --> DetermineChunks["Calcul du nombre optimal de chunks<br>(optimal_chunk_count)"]
+    DetermineChunks --> DefineChunk["Détermination de la taille de chaque chunk<br>(calculate_chunk_size)"]
+    DefineChunk --> TransferChunks["transfer_all_chunks()<br>- Transfert progressif des éléments par chunk de A vers B"]
+    TransferChunks --> ProcessChunk["Pour chaque chunk :<br>1. Localisation précise des éléments<br>2. Optimisation des rotations (ra, rra)"]
+    ProcessChunk --> ReconstructA["reconstruct_stack()<br>1. Identifie le maximum dans B<br>2. Rotation pour le mettre en tête<br>3. Transfert vers A<br>4. Répétition jusqu'à épuisement de B"]
+
+    %% Instructions disponibles pour manipuler les piles
+    Commands["Instructions disponibles"]
+    Commands --> SwapCommands["Swap (sa, sb, ss)<br>- Échange des deux premiers éléments"]
+    Commands --> PushCommands["Push (pa, pb)<br>- Transfert du sommet de l'une vers l'autre"]
+    Commands --> RotateCommands["Rotate (ra, rb, rr)<br>- Décalage vers le haut<br>(Le premier devient dernier)"]
+    Commands --> ReverseCommands["Reverse Rotate (rra, rrb, rrr)<br>- Décalage vers le bas<br>(Le dernier devient premier)"]
+
+    %% Fonctions utilitaires pour support additionnel
+    Utils["Fonctions utilitaires"]
+    Utils --> FindIndexPos["find_index_pos()<br>- Détermine la position d'un élément par son index"]
+    Utils --> RotateToIndex["rotate_to_index()<br>- Rotation optimale pour amener un élément en tête"]
+    Utils --> FindMaxPos["find_max_position()<br>- Recherche la position du maximum dans B"]
+    Utils --> RotateToMax["rotate_to_max()<br>- Fait tourner B pour que le maximum soit en tête"]
+
+    %% Ajout de remarques pédagogiques pour faciliter la compréhension
+    ConfirmStack --- Explication1["Chaque étape est vérifiée pour assurer<br>la robustesse et la conformité aux règles"]
+    DetermineChunks --- Explication2["Le choix du chunk permet de minimiser<br>les opérations de rotation et d'optimiser le tri"]
+    ReconstructA --- Explication3["La reconstruction se base sur la recherche<br>du maximum dans B pour une réinsertion optimale"]
+
+    %% Attribution de classes pour une classification visuelle
+    class Main,InitStack,SortStack,CheckSize,SortLarge,DetermineChunks,TransferChunks,ProcessChunk,ReconstructA pedagogic
+    class Main module
+    class InitStack module
+    class SortStack algorithm
+    class CheckSize algorithm
+    class SortTwo algorithm
+    class SortThree algorithm
+    class SortFive algorithm
+    class SortLarge algorithm
+    class DetermineChunks algorithm
+    class TransferChunks algorithm
+    class ProcessChunk algorithm
+    class ReconstructA algorithm
+    class Commands command
+    class SwapCommands command
+    class PushCommands command
+    class RotateCommands command
+    class ReverseCommands command
+    class Utils module
