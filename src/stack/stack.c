@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_func.c                                       :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 15:39:03 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:23:06 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:16:34 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	stack_add_node(t_stack_node **stack, int val)
 {

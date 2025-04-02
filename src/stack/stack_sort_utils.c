@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:29:59 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:40:22 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:40:57 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	optimal_chunk_count(int total)
 {
@@ -42,4 +42,43 @@ int	get_stack_size(t_stack_node **stack)
 		current = current->next;
 	}
 	return (count);
+}
+
+int	find_index_pos(t_stack_node **stack, int idx)
+{
+	t_stack_node	*current;
+	int				pos;
+
+	pos = 0;
+	current = *stack;
+	while (current)
+	{
+		if (current->index == idx)
+			return (pos);
+		pos++;
+		current = current->next;
+	}
+	return (-1);
+}
+
+void	rotate_to_index(t_stack_node **stack, int idx)
+{
+	int	pos;
+	int	size;
+
+	size = get_stack_size(stack);
+	pos = find_index_pos(stack, idx);
+	if (pos <= size / 2)
+	{
+		while (pos-- > 0)
+			commands_ra(stack, 1);
+	}
+	else
+	{
+		while (pos < size)
+		{
+			commands_rra(stack, 1);
+			pos++;
+		}
+	}
 }

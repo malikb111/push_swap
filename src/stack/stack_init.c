@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:24:31 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:16:07 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 static void	process_arg(t_stack_node **a, char **av, int start, char *arg)
 {

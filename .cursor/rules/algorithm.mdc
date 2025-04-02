@@ -1,0 +1,58 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Analyse de l'algorithme de tri dans push_swap - Version Mise à Jour
+
+## 1. Introduction
+Ce document décrit en détail le fonctionnement de l'algorithme de tri dans le projet push_swap, en mettant notamment l'accent sur les optimisations récentes apportées pour les petites piles (en particulier pour 5 éléments) ainsi que sur la méthode par chunk utilisée pour les grandes piles.
+
+## 2. Stratification du tri en fonction de la taille de la pile
+
+### 2.1. Tri pour petites piles (2, 3 et 5 éléments)
+
+- **2 éléments :**
+  Si le premier élément est supérieur au second, un simple échange (`sa`) est effectué pour inverser leur ordre.
+
+- **3 éléments :**
+  La séquence optimale implique l'utilisation de commandes telles que `sa`, `ra` ou `rra` selon l'ordre initial des trois éléments pour obtenir un tri rapide et efficace.
+
+- **5 éléments :**  
+  **Stratégie optimisée (nouvelle implémentation) :**  
+  1. **Identification et transfert des minimums :**  
+     À l'aide d'une fonction comme `rotate_to_index` (implémentée dans `stack_sort_utils.c`), les deux plus petits éléments sont localisés et amenés en haut de la pile A grâce au choix judicieux entre `ra` et `rra`.
+  2. **Transfert vers la pile B :**  
+     Ces deux éléments sont transférés dans la pile B (`pb`), allégeant ainsi la pile A.
+  3. **Tri des 3 éléments restants :**  
+     La fonction `sort_three_stack` (définie dans `stack_sort.c`) est utilisée pour trier efficacement les 3 éléments restants dans la pile A.
+  4. **Réinsertion contrôlée :**  
+     Les deux éléments préalablement transférés sont réinsérés dans la pile A via `pa` puis ajustés (éventuellement par quelques rotations) afin de garantir leur mise en place correcte.  
+  Cette approche réduit significativement le nombre total de commandes par rapport à une méthode unique appliquée à tous les cas.
+
+### 2.2. Tri pour grandes piles (plus de 5 éléments)
+
+Pour les piles de taille supérieure, l’algorithme se décompose en deux phases principales :
+
+#### 2.2.1. Phase de transfert (chunking)
+- **Indexation :**  
+  Chaque élément se voit attribuer un indice correspondant à sa position dans l'ordre trié.
+- **Division en segments (chunks) :**  
+  Le nombre total d’éléments est divisé en plusieurs segments à l’aide de fonctions dédiées telles que `optimal_chunk_count` et `calculate_chunk_size` (voir `stack_sort_utils.c`).
+- **Transfert par chunk :**  
+  À l’aide de `transfer_chunk` (définie dans `stack_sort_transfer.c`), les éléments appartenant au chunk courant sont progressivement transférés de la pile A vers la pile B. Des rotations, voire des doubles rotations, sont appliquées pour optimiser leur placement.
+
+#### 2.2.2. Phase de reconstruction
+- La reconstruction de la pile A se fait par une série d’opérations qui consistent à faire tourner la pile B pour amener l’élément le plus grand en tête (fonction `rotate_to_max` dans `stack_sort_reconstruct.c`) avant de le transférer vers A par `pa`.  
+- Ce processus est répété tant que la pile B contient des éléments, garantissant ainsi une reconstruction progressive en ordre décroissant, qui se traduit finalement par un tri croissant dans A.
+
+## 3. Fonctionnement global
+
+1. **Pour les petites piles :**
+   - **2 éléments :** échange si nécessaire.
+   - **3 éléments :** utilisation d'une séquence adaptée (voir `sort_three_stack`).
+   - **5 éléments :** application de la nouvelle stratégie combinant transfert des deux plus petits éléments vers B, tri optimisé des 3 éléments restants, puis réinsertion ordonnée dans A.
+   
+2. **Pour les grandes piles :**
+   - **Phase de transfert par chunks :** indexation, division en segments et transfert progressif.
+   - **Phase de reconstruction :** récupération et repositionnement des éléments de B dans A grâce à des rotations stratégiques.

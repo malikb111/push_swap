@@ -1,21 +1,22 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
-LIBFT_DIR = libft
+LIBFT_DIR = external/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-INCLUDES = -I$(LIBFT_DIR)
-SRC = push_swap.c \
-      errors/errors_func.c \
-      commands/swap_func.c \
-      stack/stack_func.c \
-      stack/stack_init.c \
-      stack/stack_sort.c \
-	  stack/stack_sort_transfer.c \
-	  stack/stack_sort_reconstruct.c \
-	  stack/stack_sort_utils.c \
-      utils.c \
-	  commands/push_func.c \
-	  commands/rotate_func.c\
-	  commands/reverse_func.c
+INCLUDES = -I$(LIBFT_DIR) -Iinclude
+SRC_DIR = src
+SRC = $(SRC_DIR)/main/push_swap.c \
+      $(SRC_DIR)/errors/errors.c \
+      $(SRC_DIR)/commands/swap.c \
+      $(SRC_DIR)/stack/stack.c \
+      $(SRC_DIR)/stack/stack_init.c \
+      $(SRC_DIR)/stack/stack_sort.c \
+      $(SRC_DIR)/stack/stack_sort_transfer.c \
+      $(SRC_DIR)/stack/stack_sort_reconstruct.c \
+      $(SRC_DIR)/stack/stack_sort_utils.c \
+      $(SRC_DIR)/utils/utils.c \
+      $(SRC_DIR)/commands/push.c \
+      $(SRC_DIR)/commands/rotate.c \
+      $(SRC_DIR)/commands/reverse.c
 OBJ = $(SRC:.c=.o)
 NAME = push_swap
 
@@ -27,8 +28,8 @@ $(LIBFT):
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-.c.o: 
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o ${<:.c=.o}
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -41,45 +42,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-test2:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 2))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test3:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-100 -n 3))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test5:				$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 5))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test100:			$(NAME)
-					$(eval ARG = $(shell shuf -i 0-5000 -n 100))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test500:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 500))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test1000:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l
-
-test5000:			$(NAME)	
-					$(eval ARG = $(shell shuf -i 0-15000 -n 5000))
-					./push_swap $(ARG) | ./checker_Mac $(ARG)
-					@echo -n "Instructions: "
-					@./push_swap $(ARG) | wc -l

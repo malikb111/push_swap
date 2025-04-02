@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:21:23 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:02:39 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:41:14 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 static void	sort_two_stack(t_stack_node **stack_a)
 {
@@ -45,6 +45,22 @@ static void	sort_three_stack(t_stack_node **stack_a)
 		commands_rra(stack_a, 1);
 }
 
+static void	sort_five_stack(t_stack_node **stack_a, t_stack_node **stack_b)
+{
+	int	i;
+
+	i = 0;
+	while (i < 2)
+	{
+		rotate_to_index(stack_a, i);
+		commands_pb(stack_a, stack_b, 1);
+		i++;
+	}
+	sort_three_stack(stack_a);
+	commands_pa(stack_a, stack_b, 1);
+	commands_pa(stack_a, stack_b, 1);
+}
+
 static void	sort_large_stack(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	total;
@@ -63,6 +79,8 @@ void	stack_sort(t_stack_node **stack_a, t_stack_node **stack_b)
 		sort_two_stack(stack_a);
 	else if (size == 3)
 		sort_three_stack(stack_a);
+	else if (size == 5)
+		sort_five_stack(stack_a, stack_b);
 	else
 		sort_large_stack(stack_a, stack_b);
 }

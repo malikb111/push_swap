@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_func.c                                     :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 23:01:02 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:21:31 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:16:59 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 static void	reverse_rotate(t_stack_node **stack)
 {

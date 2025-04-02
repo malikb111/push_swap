@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:12:35 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:44:18 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:04:20 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 /* Retourne la position de l'élément de B ayant l'index maximum.
    Les positions commencent à 0. */

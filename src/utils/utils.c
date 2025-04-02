@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:08:23 by malik             #+#    #+#             */
-/*   Updated: 2025/02/25 10:03:29 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:16:39 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 int	ft_isspace(char c)
 {

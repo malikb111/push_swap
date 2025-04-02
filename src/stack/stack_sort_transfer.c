@@ -6,11 +6,11 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 18:12:37 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:34:46 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:16:14 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 /*
 ** Vérifie s'il existe dans la pile un élément dont l'index est

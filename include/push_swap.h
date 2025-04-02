@@ -6,14 +6,14 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 10:12:10 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:44:24 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 17:41:15 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "../external/libft/libft.h"
 # include <limits.h>
 # include <stdlib.h>
 
@@ -72,5 +72,7 @@ void					reconstruct_stack(t_stack_node **a,
 int						optimal_chunk_count(int total);
 int						calculate_chunk_size(int total, int num_chunks);
 t_stack_node			*stack_find_last(t_stack_node **stack);
+int						find_index_pos(t_stack_node **stack, int idx);
+void					rotate_to_index(t_stack_node **stack, int idx);
 
 #endif

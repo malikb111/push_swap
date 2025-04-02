@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_func.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 22:21:39 by abbouras          #+#    #+#             */
-/*   Updated: 2025/02/25 10:02:47 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:17:06 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	commands_pa(t_stack_node **stack_a, t_stack_node **stack_b, int log)
 {

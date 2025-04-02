@@ -1,0 +1,184 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+### 1. Titre du projet
+**Nom du projet : Push_swap**
+
+Le projet s'appelle "Push_swap". Ce nom reflète son essence : il s'agit de manipuler des piles (stacks) en "poussant" (push) et en "échangeant" (swap) des éléments pour les trier. C'est un exercice d'algorithmie qui met l'accent sur l'efficacité et la logique.
+
+---
+
+### 2. But du projet
+**Quel est l’objectif principal ?**
+
+L'objectif principal du projet "Push_swap" est de **trier une liste d'entiers dans une pile** (nommée pile *a*) en utilisant un **ensemble limité d'instructions**, tout en minimisant le nombre d'opérations nécessaires. Voici une explication claire et détaillée :
+
+- Vous recevez une liste d'entiers en entrée (par exemple, "2 1 3 6 5 8"), qui représente la pile *a*. Au départ, une deuxième pile, appelée pile *b*, est vide.
+- Votre programme doit **calculer et afficher la séquence d'instructions la plus courte possible** pour trier la pile *a* en ordre croissant, avec le plus petit nombre au sommet (exemple : "1 2 3 5 6 8").
+- Les instructions disponibles sont prédéfinies (comme *swap*, *push*, *rotate*, etc.), et vous devez les combiner intelligemment pour atteindre cet objectif.
+- Le défi réside dans l'**optimisation** : il ne suffit pas de trier, il faut le faire avec le **moins d'opérations possible**, car votre performance sera évaluée sur ce critère.
+
+En résumé, "Push_swap" est un exercice qui teste votre capacité à :
+- Comprendre et manipuler des structures de données (piles).
+- Implémenter des algorithmes de tri efficaces.
+- Optimiser une solution dans un cadre contraint.
+
+---
+
+### 3. Contraintes et règles
+**Quelles sont les consignes ou limitations à respecter ?**
+
+Le projet impose des règles strictes pour garantir une implémentation rigoureuse et conforme. Voici une liste détaillée et organisée :
+
+#### **Règles générales de programmation**
+- **Langage** : Le programme doit être écrit en **C**.
+- **Norme** : Le code doit respecter "la Norme" (un standard de codage spécifique, probablement celui de 42), y compris pour les fichiers bonus. Toute violation entraîne une note de 0.
+- **Stabilité** : Les fonctions ne doivent pas provoquer d'erreurs inattendues (ex. : segmentation fault, bus error, double free), sauf en cas de comportement indéfini. Une erreur de ce type rend le projet non fonctionnel (note de 0).
+- **Gestion de la mémoire** : Toute mémoire allouée sur le *heap* (via *malloc*) doit être libérée correctement. Aucun *leak* n'est toléré.
+- **Variables globales** : Interdites.
+
+#### **Makefile**
+- Un **Makefile** est requis pour compiler le projet.
+- **Flags de compilation** : Utiliser `-Wall`, `-Wextra`, et `-Werror` pour activer les avertissements et les traiter comme des erreurs.
+- **Règles obligatoires** : 
+  - `$(NAME)` : Nom de l'exécutable (ici, *push_swap*).
+  - `all` : Compile tout.
+  - `clean` : Supprime les fichiers objets.
+  - `fclean` : Supprime les fichiers objets et l'exécutable.
+  - `re` : Recompile tout de zéro.
+- **Pas de relink** : Le Makefile ne doit pas recompiler inutilement si rien n'a changé.
+- **Bonus** : Si des bonus sont inclus, une règle `bonus` doit être ajoutée, et les fichiers bonus doivent être dans un dossier séparé nommé `bonus.{c/h}`.
+
+#### **Libft**
+- La bibliothèque **libft** (une bibliothèque personnelle de fonctions en C) est autorisée.
+- Si utilisée, ses sources et son Makefile doivent être copiés dans un dossier `libft` à la racine du projet.
+- Le Makefile du projet doit compiler *libft* avant de compiler *push_swap*.
+
+#### **Instructions et comportement du programme**
+- **Entrée** : Le programme *push_swap* prend une liste d'entiers en paramètres (ex. : `./push_swap 2 1 3 6 5 8`), représentant la pile *a*. Le premier argument est au sommet de la pile.
+- **Instructions autorisées** : 
+  - `sa` : Échange les 2 premiers éléments de *a*.
+  - `sb` : Échange les 2 premiers éléments de *b*.
+  - `ss` : `sa` et `sb` simultanément.
+  - `pa` : Déplace le sommet de *b* vers *a*.
+  - `pb` : Déplace le sommet de *a* vers *b*.
+  - `ra` : Fait tourner *a* vers le haut (le premier devient dernier).
+  - `rb` : Fait tourner *b* vers le haut.
+  - `rr` : `ra` et `rb` simultanément.
+  - `rra` : Fait tourner *a* vers le bas (le dernier devient premier).
+  - `rrb` : Fait tourner *b* vers le bas.
+  - `rrr` : `rra` et `rrb` simultanément.
+- **Sortie** : Afficher la suite d'instructions (ex. : `pb\nra\npa`) sur la sortie standard, chaque instruction séparée par un `\n` et rien d'autre.
+- **Gestion des erreurs** : 
+  - Afficher `"Error\n"` sur la sortie d'erreur (*stderr*) si :
+    - Les paramètres ne sont pas des nombres (ex. : `./push_swap 2 a 3`).
+    - Il y a des doublons (ex. : `./push_swap 2 2 3`).
+    - Les nombres dépassent la taille d'un *int*.
+  - Si aucun paramètre n'est donné (ex. : `./push_swap`), ne rien afficher et quitter.
+
+#### **Performance**
+- Le nombre d'opérations est évalué :
+  - **100 nombres** : Moins de 700 opérations en moyenne pour une note de 80.
+  - **500 nombres** : Moins de 5500 opérations pour la note maximale et l'accès aux bonus.
+- Si la séquence est trop longue ou ne trie pas correctement, la note est 0.
+
+#### **Rendu**
+- Le projet doit être soumis via un dépôt **Git** assigné.
+- Les programmes de test sont recommandés mais non rendus ni notés.
+
+---
+
+### 4. Contenu
+**Quelles informations ou éléments doivent être inclus dans le projet ?**
+
+Le projet "Push_swap" comprend plusieurs éléments essentiels à livrer. Voici une description détaillée :
+
+#### **Partie obligatoire**
+- **Programme principal** :
+  - Nom : `push_swap`.
+  - Fichiers : `*.c` (sources), `*.h` (headers).
+  - Rôle : Prend une liste d'entiers en paramètres, calcule et affiche la séquence d'instructions la plus courte pour trier la pile *a*.
+- **Makefile** :
+  - Contient les règles `$(NAME)`, `all`, `clean`, `fclean`, `re`.
+  - Compile avec les flags `-Wall`, `-Wextra`, `-Werror`.
+- **Fonctions externes autorisées** :
+  - `read`, `write`, `malloc`, `free`, `exit`.
+  - `ft_printf` (ou équivalent personnel) si inclus dans *libft*.
+
+#### **Partie bonus (optionnelle)**
+- **Programme bonus** :
+  - Nom : `checker`.
+  - Fichiers : Dans un dossier `bonus.{c/h}`.
+  - Rôle : Vérifie si une liste d'instructions trie correctement la pile *a*.
+  - Fonctionnement :
+    - Prend la pile *a* en paramètres (comme *push_swap*).
+    - Lit des instructions sur l'entrée standard (ex. : `pb\nra\npa`).
+    - Exécute ces instructions sur la pile *a*.
+    - Affiche :
+      - `"OK\n"` si *a* est triée et *b* est vide.
+      - `"KO\n"` si *a* n’est pas triée ou *b* n’est pas vide.
+      - `"Error\n"` en cas d’erreur (instruction invalide, doublons, etc.).
+- **Makefile** : Inclut une règle `bonus` pour compiler *checker*.
+
+#### **Libft (optionnelle)**
+- Si utilisée, inclure un dossier `libft` avec ses sources et son Makefile.
+
+En résumé, le contenu minimum est :
+1. Le programme *push_swap* (fichiers C et headers).
+2. Un Makefile fonctionnel.
+Optionnellement :
+3. Le programme *checker* dans un dossier bonus.
+4. La *libft* si nécessaire.
+
+---
+
+### 5. Résultat attendu
+**À quoi doit ressembler le rendu final ?**
+
+Le rendu final doit répondre à des attentes précises en termes de fonctionnalité et de présentation. Voici une explication claire :
+
+#### **Pour *push_swap* (partie obligatoire)**
+- **Entrée** : Une liste d’entiers (ex. : `./push_swap 2 1 3 6 5 8`).
+- **Sortie** : Une séquence d’instructions sur la sortie standard, chaque instruction sur une nouvelle ligne (ex. : `pb\nra\npa\nsa`). Cette séquence doit :
+  - Trier la pile *a* en ordre croissant, avec le plus petit nombre au sommet.
+  - Laisser la pile *b* vide à la fin.
+  - Utiliser le moins d’opérations possible (respecter les seuils de performance : 700 pour 100 nombres, 5500 pour 500 nombres).
+- **Cas particuliers** :
+  - Si aucun paramètre : Ne rien afficher, quitter proprement.
+  - En cas d’erreur (doublons, non-numérique, etc.) : Afficher `"Error\n"` sur *stderr* et quitter.
+
+**Exemple** :
+```
+$ ./push_swap 2 1 3
+sa
+```
+Après exécution de `sa`, la pile *a* devient "1 2 3", qui est triée.
+
+#### **Pour *checker* (partie bonus)**
+- **Entrée** :
+  - Paramètres : Une liste d’entiers (ex. : `./checker 2 1 3`).
+  - Instructions : Lues sur l’entrée standard (ex. : `sa\n` suivi de Ctrl+D).
+- **Sortie** :
+  - `"OK\n"` si la pile *a* est triée (ex. : "1 2 3") et *b* est vide après exécution.
+  - `"KO\n"` si la pile *a* n’est pas triée ou *b* n’est pas vide.
+  - `"Error\n"` en cas d’erreur (ex. : instruction inconnue comme `xyz`).
+
+**Exemple** :
+```
+$ ./checker 2 1 3
+sa
+[Ctrl+D]
+OK
+```
+Ici, `sa` échange 2 et 1, donnant "1 2 3", qui est trié.
+
+#### **Qualité technique**
+- Le code doit être robuste (pas de crashs), sans fuites de mémoire, et conforme à la Norme.
+- Le Makefile doit compiler proprement sans erreurs ni relink inutiles.
+
+---
+
+### Conclusion
+Le projet "Push_swap" est un défi d’algorithmie où vous devez trier une pile d’entiers en C avec un minimum d’opérations, en respectant des contraintes strictes (Norme, mémoire, performance). Le rendu final est un programme fonctionnel (*push_swap*), avec un bonus optionnel (*checker*), accompagné d’un Makefile efficace. Ce brief devrait vous donner une vue claire et complète pour aborder ce projet avec succès !
