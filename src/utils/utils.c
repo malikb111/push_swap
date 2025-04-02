@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:08:23 by malik             #+#    #+#             */
-/*   Updated: 2025/04/02 19:00:40 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:24:44 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	count_words_dup(char const *s, char c)
 /**
  * @brief Convertit une chaîne en long.
  *
- * Ignore les espaces initiaux, tient compte du signe (+ ou -) 
+ * Ignore les espaces initiaux, tient compte du signe (+ ou -)
  * et convertit la partie numérique en une valeur long.
  *
  * @param str Chaîne à convertir.

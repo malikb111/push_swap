@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 11:18:12 by abbouras          #+#    #+#             */
-/*   Updated: 2025/04/02 18:57:07 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:27:05 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param start Indice de départ dans av.
  * @param arg Argument à traiter.
  */
-static void	process_arg(t_stack_node **a, char **av, int start, 
+static void	process_arg(t_stack_node **a, char **av, int start,
 		char *arg)
 {
 	long	n;
@@ -93,8 +93,8 @@ static t_stack_node	*find_min(t_stack_node **a)
 	min_node = NULL;
 	while (current)
 	{
-		if ((!min_node || current->nbr < min_node->nbr) && 
-				current->index == -1)
+		if ((!min_node || current->nbr < min_node->nbr)
+			&& current->index == -1)
 			min_node = current;
 		current = current->next;
 	}

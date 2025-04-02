@@ -6,7 +6,7 @@
 /*   By: abbouras <abbouras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 22:21:23 by abbouras          #+#    #+#             */
-/*   Updated: 2025/04/02 18:59:24 by abbouras         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:27:20 by abbouras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	sort_three_stack(t_stack_node **stack_a)
  * @param stack_a Adresse du pointeur de la pile A.
  * @param stack_b Adresse du pointeur de la pile B.
  */
-static void	sort_five_stack(t_stack_node **stack_a, 
+static void	sort_five_stack(t_stack_node **stack_a,
 					t_stack_node **stack_b)
 {
 	int	i;
@@ -97,7 +97,7 @@ static void	sort_five_stack(t_stack_node **stack_a,
  * @param stack_a Adresse du pointeur de la pile A.
  * @param stack_b Adresse du pointeur de la pile B.
  */
-static void	sort_large_stack(t_stack_node **stack_a, 
+static void	sort_large_stack(t_stack_node **stack_a,
 					t_stack_node **stack_b)
 {
 	int	total;
